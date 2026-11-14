@@ -1,0 +1,18 @@
+seed: 42
+
+persuader: "openai:gpt-6.1-sol"
+persuadees: ["local", "anthropic:claude-fable-5-1", "openai:gpt-6-astra"]
+monitor: anthropic:claude-sonnet-5-5
+
+scenarios: scenarios/seed_scenarios.jsonl
+arms: [cold, linked]
+
+reps: 1
+n_turns: 2
+persuader_temp: 1.0
+persuadee_temp: 1.0
+max_tokens: 3000
+workers: 8
+reasoning_effort: low
+top_p: 0.95
+top_k: 20

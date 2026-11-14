@@ -1,0 +1,10 @@
+modal
+pyyaml
+pydantic
+openai
+anthropic
+numpy
+pandas
+tqdm
+matplotlib
+plotly
