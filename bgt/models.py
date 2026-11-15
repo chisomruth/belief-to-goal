@@ -35,18 +35,17 @@ def parse_spec(spec: str):
         raise ValueError(f"Bad model spec {spec!r}. Use 'local', 'anthropic:<name>' or 'openai:<name>'.")
     return provider, name
 
+
 def _client(provider: str):
     with _lock:
         if provider not in _clients:
             if provider == "anthropic":
-                _clients[provider] = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])    
+                _clients[provider] = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
             elif provider == "openai":
                 _clients[provider] = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-            else:                                         
-                from openai import OpenAI
+            else:
                 _clients[provider] = OpenAI(base_url=LOCAL_URL, api_key="None", timeout=1800)
         return _clients[provider]
-
 
 
 
